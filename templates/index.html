@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panorama Creator - Ghép Ảnh Chuyên Nghiệp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <div class="main-wrapper">
+        <div class="sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">📐</div>
+                <h1 class="logo-text">Panorama<br>Creator</h1>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-icon">💡</div>
+                <h3>Hướng dẫn</h3>
+                <ul>
+                    <li>Chọn 2-3 ảnh có phần chồng lấp</li>
+                    <li>Ảnh sẽ được ghép tự động</li>
+                    <li>Tải về kết quả panorama</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="top-bar">
+                <h2 class="page-title">Tạo Panorama Mới</h2>
+                <div class="stats">
+                    <span class="stat-item">
+                        <span class="stat-label">Ảnh:</span>
+                        <span id="imageCount" class="stat-value">2</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="upload-controls-bar">
+                        <button type="button" id="addImageBtn" class="control-btn add">
+                            <span class="btn-icon">+</span>
+                            <span>Thêm Ảnh</span>
+                        </button>
+                        <button type="button" id="removeImageBtn" class="control-btn remove" style="display: none;">
+                            <span class="btn-icon">−</span>
+                            <span>Xóa Ảnh</span>
+                        </button>
+                    </div>
+                    
+                    <div id="uploadBox" class="upload-grid">
+                        <!-- Ảnh sẽ được thêm động -->
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="primary-btn">
+                        <span id="btnText">Bắt Đầu Ghép Ảnh</span>
+                        <span id="btnLoader" class="btn-loader" style="display: none;"></span>
+                    </button>
+                </form>
+            </div>
+
+            <div id="errorMessage" class="alert error" style="display: none;"></div>
+
+            <div id="results" class="results-panel" style="display: none;">
+                <div class="results-header">
+                    <h2 class="results-title">Kết Quả Panorama</h2>
+                    <button id="downloadBtn" class="download-btn">
+                        <span class="btn-icon">⬇</span>
+                        Tải Về
+                    </button>
+                </div>
+                
+                <div class="results-content">
+                    <div class="result-group">
+                        <h3 class="group-title">
+                            <span class="title-icon">🖼️</span>
+                            Ảnh Gốc
+                        </h3>
+                        <div id="originalImages" class="images-showcase">
+                            <!-- Ảnh gốc -->
+                        </div>
+                    </div>
+
+                    <div class="result-group" id="matchSection" style="display: none;">
+                        <h3 class="group-title">
+                            <span class="title-icon">🔗</span>
+                            Quá Trình So Khớp
+                        </h3>
+                        <div id="matchImages" class="images-showcase">
+                            <!-- Ảnh so khớp -->
+                        </div>
+                    </div>
+
+                    <div class="result-group highlight">
+                        <h3 class="group-title">
+                            <span class="title-icon">✨</span>
+                            Panorama Hoàn Chỉnh
+                        </h3>
+                        <div class="panorama-container">
+                            <img id="panoramaImage" src="" alt="Panorama">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
